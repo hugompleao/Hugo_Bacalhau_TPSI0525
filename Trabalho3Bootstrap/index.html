@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="PT-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+  <!-- NavBar -->
+  <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Meu Portfólio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#sobre">Sobre Mim</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projetos">Projetos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </li>
+        <li class="nav.item">
+          <a class="nav-link" href="https://www.atec.pt/">Escola de formação</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Sobre Mim -->
+<section id="sobre" class="py-5 bg-light text-center" >
+<br>
+  <div class="container text-center">
+        <h2 class="text-warning">Sobre Mim</h2>
+        <p class="lead">
+            O meu nome é Hugo, sou aluno da ATEC no curso de programação de sistemas de informação.</p>
+  </div>
+</section>
+
+<!-- Projetos -->
+<section id="projetos" class="py-5 bg-dark">
+  <div class="container">
+    <h2 class="text-center text-light mb-4">Os Meus Projetos</h2>
+    <div class="row g-4">
+      
+      <!-- Projeto 1 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="imagens/PrimeiroTrabalho.png" class="card-img-top" alt="Projeto Aprendizagem">
+          <div class="card-body">
+            <h5 class="card-title">Projeto Aprendizagem</h5>
+            <p class="card-text">Teve como base a aprendizagem de técnicas básicas de HTML.</p>
+            <a href="https://github.com/hugompleao/Hugo_Bacalhau_TPSI0525/tree/main/Aula2" class="btn btn-warning" target="_blank">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="imagens/LauGarage.png" class="card-img-top" alt="Projeto LauGarage">
+          <div class="card-body">
+            <h5 class="card-title">Projeto LauGarage</h5>
+            <p class="card-text">Teve como intuito aplicar as técnicas aprendidas em aula.</p>
+            <a href="https://github.com/hugompleao/Hugo_Bacalhau_TPSI0525/tree/main/Trabalho1" class="btn btn-warning" target="_blank">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="imagens/SRprojeto.png" class="card-img-top" alt="Projeto ShadowRunners">
+          <div class="card-body">
+            <h5 class="card-title">Projeto ShadowRunners</h5>
+            <p class="card-text">Teve como base o aprofundamento de conhecimento de HTML e CSS.</p>
+            <a href="https://github.com/hugompleao/Hugo_Bacalhau_TPSI0525/tree/main/Trabalho2" class="btn btn-warning" target="_blank">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="py-5 bg-light text-center">
+  <div class="container text-center">
+        <h2 class="text-warning">Contacto</h2>
+        <p>Email: hugo.bacalhau.t0121748@edu.atec.pt</p>
+  </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+  <div class="container justify-content-center"> 
+    <p>© 2025 Hugo. Todos os direitos reservados.</p>
+  </div>
+</footer>
+</html>
