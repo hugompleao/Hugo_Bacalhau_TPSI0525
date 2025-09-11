@@ -14,5 +14,5 @@ function mostrarParesImpares() {
         contadorImpar += 2;
     }
 }
-
+ 
 mostrarParesImpares();
