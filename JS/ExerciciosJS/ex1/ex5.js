@@ -5,5 +5,5 @@ function mostrarNumeros() {
         console.log(i);
     }
 }
-
+ 
 mostrarNumeros();

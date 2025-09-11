@@ -18,7 +18,7 @@ function numPrimo(numero) {
     }
     return divisores === 2;
 }
-
+ 
 if (numPrimo(num)) {
     console.log('É primo');
 } else {

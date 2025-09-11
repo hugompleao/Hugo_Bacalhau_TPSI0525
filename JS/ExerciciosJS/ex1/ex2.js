@@ -14,7 +14,7 @@ function verificarParesImpares() {
         i++;
     }
 }
-
+ 
 verificarParesImpares();
 
 
