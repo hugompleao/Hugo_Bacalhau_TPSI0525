@@ -1,5 +1,5 @@
 function mostrarNumerosPrimos() {
-    console.log('10 números primos:');
+    console.log('------10 números primos------');
     let contador = 0;
     let num = 2;
 

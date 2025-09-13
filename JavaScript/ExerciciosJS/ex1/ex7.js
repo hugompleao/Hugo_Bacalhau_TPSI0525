@@ -1,6 +1,6 @@
 function geradorNums(){
-
-    for(let i=10; i <= 1000; i+=10){
+console.log('------Gerador de números------');
+    for(let i=10; i <= 100; i+=10){
         console.log(i);
 
     }
