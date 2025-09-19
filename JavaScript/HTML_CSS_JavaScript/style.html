@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Animation</title>
+    
+    <style>
+        #bot1{
+            background-color: brown;
+            
+        }
+    
+    </style>
+
+</head>
+<body>
+    
+    <button id="bot1">Olá</button>
+
+    <script>
+
+        const botao=document.getElementById("bot1");
+        
+        function mudaCor(event){
+            
+
+            const cor='#' +Math.floor(Math.random()*16777215).toString(16);
+            console.log(cor);
+            botao.style.backgroundColor=cor;
+            botao.textContent = "Cor mudada";
+            console.log(cor)
+
+        };
+        
+        botao.onclick = mudaCor;
+
+    </script>
+
+</body>
+</html>
