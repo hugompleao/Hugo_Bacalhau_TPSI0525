@@ -1,0 +1,32 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4546,
+  "protocol": "http",
+  "name": "Ex1",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "equals": { "method": "GET", "path": "/api/marcas" }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": "{\"marcas\": [\"Toyota\", \"Audi\", \"Ford\", \"Volvo\", \"Honda\"]}"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### Verificar imposter
+GET http://localhost:2525/imposters
+
+### Teste /api/marcas
+GET http://localhost:4546/imposters/api/marcas

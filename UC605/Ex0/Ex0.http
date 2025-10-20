@@ -1,0 +1,14 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4545,
+  "protocol": "http",
+  "name": "Ex0"
+}
+
+### Validar imposter
+GET http://localhost:2525/imposters
+
+### Testar imposter 
+GET http://localhost:4545/erro404

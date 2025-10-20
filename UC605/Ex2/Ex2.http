@@ -1,0 +1,32 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4547,
+  "protocol": "http",
+  "name": "Ex2",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "equals": { "method": "GET", "path": "/api/cars", "query": {"marcas": "Toyota"} }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": "{\"marcas\": \"Toyota\", \"results\": [{\"id\": 1, \"modelo\": \"Supra\", \"preco\": 50000}]}"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### Teste pesquisa
+GET http://localhost:4547/api/cars?marcas=Toyota
+
+### Teste negativo
+GET http://localhost:4547/api/cars
