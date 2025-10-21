@@ -1,0 +1,41 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4551,
+  "protocol": "http",
+  "name": "Ex6",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/users" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        {
+          "contains": {
+            "body": "\"email\": \"exists@example.com\""
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "error": "email_exists",
+              "message": "O email introduzido já se encontra registado."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### Teste pesquisa
+POST http://localhost:4551/api/users
+Content-Type: application/json
+
+{
+    "email": "exists@example.com", 
+}

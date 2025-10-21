@@ -1,0 +1,32 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4548,
+  "protocol": "http",
+  "name": "Ex3",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "equals": { "method": "GET", "path": "/api/cars" }
+        },
+        {
+          "not": { "exists": {"query": true } } 
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": "{\"results\":[]}"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### Teste pesquisa
+GET http://localhost:4548/api/cars

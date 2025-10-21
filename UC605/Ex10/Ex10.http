@@ -1,0 +1,44 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4555,
+  "protocol": "http",
+  "name": "Ex10",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/tasks" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        { "equals": 
+        { 
+            "body": { 
+            "title":"duplicate" 
+            } 
+        } 
+        }
+      ],
+      "responses": [
+            {
+                "is": {
+                    "statusCode": 409,
+                    "headers": { 
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "error": "duplicate_task"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4555/api/tasks
+Content-Type: application/json
+
+{
+    "title":"duplicate" 
+}

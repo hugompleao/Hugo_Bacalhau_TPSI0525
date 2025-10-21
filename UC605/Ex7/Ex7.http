@@ -1,0 +1,46 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4552,
+  "protocol": "http",
+  "name": "Ex7",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/users" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        {
+          "contains": {
+            "body": "\"email\": \"exists@example.com\""
+          }
+        }
+      ],
+      "responses": [
+            {
+                "is": {
+                    "statusCode": 201,
+                    "headers": { 
+                        "Content-Type": "application/json",
+                        "Location": "/api/users/1"
+                    },
+                    "body": {
+                        "id": 1,
+                        "status": "criado",
+                        "message": "Utilizador criado com sucesso."
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4552/api/users
+Content-Type: application/json
+
+{
+    "email": "exists@example.com", 
+    "age": 21
+}

@@ -1,0 +1,78 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4554,
+  "protocol": "http",
+  "name": "Ex9",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/temperature" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        {
+          "contains": {
+            "body": "\"value\""
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "status": "error",
+              "message": "Valor de temperatura inválido. Deve ser numérico."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/temperature" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        {
+          "matches": {
+            "body": {"value":"^[A-Za-z]+$"}
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "status": "created",
+              "message": "Medição de temperatura registada com sucesso."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4554/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "T1",
+    "value": 25 
+}
+
+### Teste pesquisa adicional
+POST http://localhost:4554/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "T1",
+    "value": "teste" 
+}

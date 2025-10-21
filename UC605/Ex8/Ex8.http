@@ -1,0 +1,53 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4553,
+  "protocol": "http",
+  "name": "Ex8",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/temperature" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } },
+        {
+          "not": {
+            "contains":{
+                "body": "\"value\""
+            }
+          }
+        }
+      ],
+      "responses": [
+            {
+                "is": {
+                    "statusCode": 400,
+                    "headers": { 
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "error": "missing_fields",
+                        "message": "O campo 'value' é obrigatório."
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4553/api/temperature
+Content-Type: application/json
+
+{
+    "string": "" 
+}
+
+### Teste pesquisa positivo
+POST http://localhost:4553/api/temperature
+Content-Type: application/json
+
+{
+    "value": "25" 
+}
