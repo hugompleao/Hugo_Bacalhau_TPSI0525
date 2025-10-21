@@ -1,0 +1,71 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+    "port": 4557,
+    "protocol": "http",
+    "name": "Ex12",
+    "stubs": [
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/auth" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { 
+                    "deepEquals": { 
+                        "body": { 
+                            "username": "user1",
+                            "password": "pass1"
+                        }
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" }, 
+                        "body": {
+                            "token": "validtoken",
+                            "expires_in": 365
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/auth" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 401,
+                        "headers": { "Content-Type": "application/json" }, 
+                        "body": {
+                            "error": "Não autorizado" 
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4557/api/auth
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "password":"pass1"
+}
+
+### Teste negativo
+POST http://localhost:4557/api/auth
+Content-Type: application/json
+
+{
+    "username":"user1234",
+    "password":"pass1234"
+}

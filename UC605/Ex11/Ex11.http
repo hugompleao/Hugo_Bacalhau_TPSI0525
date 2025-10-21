@@ -1,0 +1,38 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4556,
+  "protocol": "http",
+  "name": "Ex11",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/tasks" } },
+        { "equals": { "headers": { "Content-Type": "application/json" } } }
+      ],
+      "responses": [
+            {
+                "is": {
+                    "statusCode": 201,
+                    "headers": { 
+                        "Location": "/api/tasks/1"
+                    },
+                    "body": {
+                        "id": 1,
+                        "status": "created"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+    
+### Teste pesquisa
+POST http://localhost:4556/api/tasks
+Content-Type: application/json
+
+{
+    "title":"testeTitulo" 
+}
