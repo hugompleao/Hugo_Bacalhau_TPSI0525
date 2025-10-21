@@ -9,15 +9,14 @@ Content-Type: application/json
     {
       "predicates": [
         {
-          "equals": { "method": "GET", "path": "/api/cars", "query": {"marcas": "Toyota"} }
+          "equals": { "method": "GET", "path": "/api/cars", "query": {"brand": "Toyota"} }
         }
       ],
       "responses": [
         {
           "is": {
-            "statusCode": 200,
-            "headers": { "Content-Type": "application/json" },
-            "body": "{\"marcas\": \"Toyota\", \"results\": [{\"id\": 1, \"modelo\": \"Supra\", \"preco\": 50000}]}"
+            "statusCode": 200, "headers": { "Content-Type": "application/json" },
+            "body": "{\"brand\": \"Toyota\", \"results\": [{\"id\": 1, \"modelo\": \"Supra\", \"preco\": 50000}]}"
           }
         }
       ]
@@ -26,7 +25,7 @@ Content-Type: application/json
 }
 
 ### Teste pesquisa
-GET http://localhost:4547/api/cars?marcas=Toyota
+GET http://localhost:4547/api/cars?brand=Toyota
 
 ### Teste negativo
 GET http://localhost:4547/api/cars
