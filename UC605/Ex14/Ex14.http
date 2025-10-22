@@ -1,0 +1,63 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+    "port": 4559,
+    "protocol": "http",
+    "name": "Ex14",
+    "stubs": [
+        {
+            "predicates": [
+                { "equals": { "method": "POST" } },
+                { 
+                    "not": { 
+                        "equals": { 
+                            "headers": { 
+                                "Content-Type": "application/json" 
+                            } 
+                        } 
+                    }
+                }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 415,
+                        "body": {
+                            "error": "Error",
+                            "message": "Content-Type application/json é obrigatório."
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates": [
+                { "equals": { "method": "POST" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "status": "Ok"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+    
+### Teste pesquisa
+POST http://localhost:4559/api
+
+### Teste positivo
+POST http://localhost:4559/api
+Content-Type: application/json
+
+{}
+
+

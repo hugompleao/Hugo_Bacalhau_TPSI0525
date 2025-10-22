@@ -1,0 +1,52 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+    "port": 4558,
+    "protocol": "http",
+    "name": "Ex13",
+    "stubs": [
+        {
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/profile" } },
+                { "equals": { "headers": { "Authorization": "Bearer validtoken" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "email": "email@user.com",
+                            "username": "user1"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/profile" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 403,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "forbidden"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+    
+### Teste pesquisa
+GET http://localhost:4558/api/profile
+Authorization: Bearer validtoken
+
+### Teste negativo
+GET http://localhost:4558/api/profile
