@@ -1,0 +1,474 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+    "port": 4561,
+    "protocol": "http",
+    "name": "ExJuntarStubs",
+    "stubs": [
+        {
+            //Ex13
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/profile" } },
+                { "equals": { "headers": { "Authorization": "Bearer validtoken" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": { "username": "user1", "email": "user1@app.com", "role": "member" }
+                    }
+                }
+            ]
+        },
+        {
+            //Ex2
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/cars" } },
+                { "contains": { "query": { "brand": "Toyota" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": { "brand": "Toyota", "results": [ { "id": 1, "modelo": "Supra", "preco": 50000 } ] }
+                    }
+                }
+            ]
+        },
+        
+
+        {
+            //Ex4
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/login" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "deepEquals": { "body": { "username": "admin", "password": "secret" } } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 200,
+                    "headers": { "Content-Type": "application/json" },
+                    "body":
+                    {
+                        "status": "ok", 
+                        "token": "validtoken"
+                    }
+                }
+                }
+            ]
+        },
+        {
+            //Ex5
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/login" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 401,
+                    "headers": { "Content-Type": "application/json" },
+                    "body": {
+                    "error": "invalid_credentials"
+                    }
+                }
+                }
+            ]
+        },
+        {
+            //Ex6
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/users" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "contains": { "body": "\"email\": \"exists@example.com\"" } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 409,
+                    "headers": { "Content-Type": "application/json" },
+                    "body": {
+                    "error": "email_exists",
+                    "message": "O email introduzido já se encontra registado."
+                    }
+                }
+                }
+            ]
+        },
+        {
+            //Ex7
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/users" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+            {
+                "is": {
+                    "statusCode": 201,
+                    "headers": { 
+                        "Content-Type": "application/json",
+                        "Location": "/api/users/1"
+                    },
+                    "body": {
+                        "id": 1,
+                        "status": "criado",
+                        "message": "Utilizador criado com sucesso."
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            //Ex9 - 1
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/temperature" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "matches": { "body": "\"value\"" } } 
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 400,
+                    "headers": {
+                    "Content-Type": "application/json"
+                    },
+                    "body": {
+                    "status": "error",
+                    "message": "Valor de temperatura inválido. Deve ser numérico."
+                    }
+                }
+                }
+            ]
+        },
+        {
+            //Ex8
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/temperature" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "not": { "contains": { "body": "\"value\"" } } } 
+            ],
+            "responses": [
+            {
+                "is": {
+                    "statusCode": 400,
+                    "headers": { 
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "error": "missing_fields",
+                        "message": "O campo 'value' é obrigatório."
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            //Ex9 - 2
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/temperature" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 201,
+                    "headers": {
+                    "Content-Type": "application/json"
+                    },
+                    "body": {
+                    "status": "created",
+                    "message": "Medição de temperatura registada com sucesso."
+                    }
+                }
+                }
+            ]
+        },
+        {
+            //Ex10
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/tasks" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "contains": { "body": {"title":"duplicate"} } }
+            ],
+            "responses": [
+            {
+                "is": {
+                    "statusCode": 409,
+                    "headers": { 
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "error": "duplicate_task"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            //Ex11
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/tasks" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+            {
+                "is": {
+                    "statusCode": 201,
+                    "headers": { 
+                        "Location": "/api/tasks/1"
+                    },
+                    "body": {
+                        "id": 1,
+                        "status": "created"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            //Ex12
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/auth" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "deepEquals": { "body": { "username": "user1", "password": "pass1" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" }, 
+                        "body": {
+                            "token": "validtoken",
+                            "expires_in": 365
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/auth" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 401,
+                        "headers": { "Content-Type": "application/json" }, 
+                        "body": {
+                            "error": "Não autorizado" 
+                        }
+                    }
+                }
+            ]
+        },
+
+
+        {
+            //Ex14
+            "predicates": [
+                { "equals": { "method": "POST" } },
+                { "not": { "equals": { "headers": { "Content-Type": "application/json" } } } } 
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 415,
+                        "body": {
+                            "error": "Error",
+                            "message": "Content-Type application/json é obrigatório."
+                        }
+                    }
+                }
+            ]
+        },
+        
+        {
+            //Ex1
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/brand" } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 200,
+                    "headers": { "Content-Type": "application/json" },
+                    "body": "{\"brand\": [\"Toyota\", \"Audi\", \"Ford\", \"Volvo\", \"Honda\"]}"
+                }
+                }
+            ]
+        },
+        {
+            //Ex3
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/cars" } }
+            ],
+            "responses": [
+                {
+                "is": {
+                    "statusCode": 200,
+                    "headers": { "Content-Type": "application/json" },
+                    "body": "{\"results\":[]}"
+                }
+                }
+            ]
+        },
+        {
+            //Ex13 - 2
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/profile" } } 
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 403,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "forbidden"
+                        }
+                    }
+                }
+            ]
+        },
+        
+        {
+            //Ex15
+            "predicates": [
+                { "equals": { "method": "GET" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 404,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "not_found"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+    
+### Teste pesquisa Ex13
+GET http://localhost:4561/api/profile
+Authorization: Bearer validtoken
+
+### Teste pesquisa Ex2
+GET http://localhost:4561/api/cars?brand=Toyota
+
+### Teste pesquisa Ex4
+POST http://localhost:4561/api/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "secret"
+}
+
+### Teste pesquisa Ex5
+POST http://localhost:4561/api/login
+Content-Type: application/json
+
+{
+    "username": "adminErro",
+    "password": "secretErro"
+}
+
+### Teste pesquisa Ex6
+POST http://localhost:4561/api/users
+Content-Type: application/json
+
+{
+    "email": "exists@example.com", 
+}
+
+### Teste pesquisa Ex7
+POST http://localhost:4561/api/users
+Content-Type: application/json
+
+{
+    "email": "existsEmail@example.com", 
+    "age": 21
+}
+
+### Teste pesquisa Ex9 - 1
+POST http://localhost:4561/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "T1",
+    "value": "teste" 
+}
+ 
+### Teste pesquisa Ex8
+POST http://localhost:4561/api/temperature
+Content-Type: application/json
+
+{
+    "string": "" 
+}
+
+### Teste pesquisa Ex9 - 2
+POST http://localhost:4561/api/temperature
+Content-Type: application/json
+
+{
+    "sensor_id": "T1",
+    "value": 25 
+}
+
+### Teste pesquisa Ex10
+POST http://localhost:4561/api/tasks
+Content-Type: application/json
+
+{
+    "title":"duplicate" 
+}
+
+### Teste pesquisa Ex11
+POST http://localhost:4561/api/tasks
+Content-Type: application/json
+
+{
+    "title":"testeTitulo" 
+}
+
+### Teste pesquisa Ex12
+POST http://localhost:4561/api/auth
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "password":"pass1"
+}
+
+### Teste negativo Ex12
+POST http://localhost:4561/api/auth
+Content-Type: application/json
+
+{
+    "username":"user1234",
+    "password":"pass1234"
+}
+
+### Teste pesquisa Ex14
+POST http://localhost:4561/api
+
+### Teste pesquisa Ex1
+GET http://localhost:4561/api/brand
+
+### Teste pesquisa Ex3
+GET http://localhost:4561/api/cars
+
+### Teste negativo Ex13 - 2
+GET http://localhost:4561/api/profile
+
+### Teste pesquisa Ex15
+GET  http://localhost:4561/api/teste//qualquer/coisa

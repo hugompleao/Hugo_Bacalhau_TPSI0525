@@ -9,7 +9,7 @@ Content-Type: application/json
     {
       "predicates": [
         {
-          "equals": { "method": "GET", "path": "/api/marcas" }
+          "equals": { "method": "GET", "path": "/api/brand" }
         }
       ],
       "responses": [
@@ -17,7 +17,7 @@ Content-Type: application/json
           "is": {
             "statusCode": 200,
             "headers": { "Content-Type": "application/json" },
-            "body": "{\"marcas\": [\"Toyota\", \"Audi\", \"Ford\", \"Volvo\", \"Honda\"]}"
+            "body": "{\"brand\": [\"Toyota\", \"Audi\", \"Ford\", \"Volvo\", \"Honda\"]}"
           }
         }
       ]
@@ -28,5 +28,5 @@ Content-Type: application/json
 ### Verificar imposter
 GET http://localhost:2525/imposters
 
-### Teste /api/marcas
-GET http://localhost:4546/imposters/api/marcas
+### Teste /api/brand
+GET http://localhost:4546/imposters/api/brand
