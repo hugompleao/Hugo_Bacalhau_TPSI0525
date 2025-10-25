@@ -1,0 +1,255 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+    "port": 4545,
+    "protocol": "http",
+    "name": "API Gestão de Alunos",
+    "stubs": [
+
+        //Regra 1
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/alunos" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } },
+                { "matches": { "body": "\"idade\"\\s*:\\s*[0-9]\\b" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 400,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "Erro",
+                            "message": "Idade mínima não atingida."
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 2
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/alunos" } },
+                { "equals": { "body": { "curso": "" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 404,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "Erro",
+                            "message": "Curso não encontrado."
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 3
+        {
+            "predicates": [
+                { "equals": { "method": "POST", "path": "/api/alunos" } },
+                { "equals": { "headers": { "Content-Type": "application/json" } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 201,
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "Location": "/api/alunos/1"
+                        },
+                        "body": {
+                            "id": 1,
+                            "status": "Criado",
+                            "message": "Inscrição feita com sucesso."
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 4
+        {
+            "predicates": [
+                { "equals": { "method": "PUT", "path": "/api/alunos/2" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 404,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "Aluno Inexistente",
+                            "message": "Aluno com o ID 2 não encontrado"
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 5
+        {
+            "predicates": [
+                { "equals": { "method": "PUT" } },
+                { "matches": { "path": "/api/alunos/[0-9]+$" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "status": "updated",
+                            "message": "Dados do aluno atualizados."
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 6
+        {
+            "predicates": [
+                { "equals": { "method": "DELETE" } },
+                { "not": { "equals": { "headers": { "Authorization": "Bearer admin_token" } } } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 403,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "error": "forbidden",
+                            "message": "Permissões de administrador necessárias."
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 7
+        {
+            "predicates": [
+                { "equals": { "method": "DELETE" } },
+                { "equals": { "headers": { "Authorization": "Bearer admin_token" } } }
+            ],
+            "responses": [
+                { "is": { "statusCode": 204, "body": "" } }
+            ]
+        },
+
+        //Regra 8
+        {
+            "predicates": [
+                { "equals": { "method": "GET" } },
+                { "matches": { "path": "/api/alunos/[0-9]+$" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "id": 10,
+                            "nome": "Maria Silva",
+                            "idade": 15,
+                            "curso": "Programação"
+                        }
+                    }
+                }
+            ]
+        },
+
+        //Regra 9
+        {
+            "predicates": [
+                { "equals": { "method": "GET", "path": "/api/alunos" } }
+            ],
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers": { "Content-Type": "application/json" },
+                        "body": {
+                            "total": 2,
+                            "alunos": [
+                                { "id": 4, "nome": "Teste1", "idade": 25, "curso": "Música" },
+                                { "id": 5, "nome": "Teste2", "idade": 26, "curso": "Artes" }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+
+
+    
+### Teste pesquisa
+POST http://localhost:4545/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Sara Lopes",
+    "idade": 15,
+    "curso": "Programacao"
+}
+
+#### Teste pesquisa 2
+POST http://localhost:4545/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Teste",
+    "idade": 9,
+    "curso": "Musica"
+}
+
+#### Teste pesquisa 3
+POST http://localhost:4545/api/alunos
+Content-Type: application/json
+
+{
+    "nome": "Pedro",
+    "idade": 18,
+    "curso": "Inexistente"
+}
+
+#### Teste pesquisa 4
+GET http://localhost:4545/api/alunos
+
+#### Teste pesquisa 5
+
+GET http://localhost:4545/api/alunos
+
+#### Teste pesquisa 6
+
+PUT http://localhost:4545/api/alunos
+Content-Type: application/json
+
+{
+    "idade": 20
+}
+
+#### Teste pesquisa 7
+PUT http://localhost:4545/api/alunos/1
+Content-Type: application/json
+
+{
+    "curso": "Engenharia"
+}
+
+#### Teste pesquisa 8
+DELETE http://localhost:4545/api/alunos/1
+Content-Type: application/json
+
+#### Teste pesquisa 9
+DELETE  http://localhost:4545/api/alunos/1
+Authorization:
+
