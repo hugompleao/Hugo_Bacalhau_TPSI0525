@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="StandAuto">
+    <resource name="FSharpSignatureData.StandAuto" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.StandAuto" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.StandAuto" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.StandAuto" action="remove"></resource>
+    <resource name="FSharpOptimizationData.StandAuto" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.StandAuto" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.StandAuto" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.StandAuto" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.StandAuto" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.StandAuto" action="remove"></resource>
+  </assembly>
+</linker>

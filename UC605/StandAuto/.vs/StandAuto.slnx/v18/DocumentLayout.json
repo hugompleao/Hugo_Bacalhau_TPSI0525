@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\controllers\\standcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\controllers\\standcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\standauto.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\standauto.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\standauto.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\standauto.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|c:\\dev\\hugo_bacalhau_tpsi0525\\uc605\\standauto\\standauto\\models\\standcars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C43D13C3-FAA2-D9CB-80AD-40C6864C1B4A}|StandAuto\\StandAuto.csproj|solutionrelative:standauto\\models\\standcars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StandCars.cs",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Models\\StandCars.cs",
+              "RelativeDocumentMoniker": "StandAuto\\Models\\StandCars.cs",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Models\\StandCars.cs",
+              "RelativeToolTip": "StandAuto\\Models\\StandCars.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T16:32:41.916Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StandAuto",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\StandAuto.csproj",
+              "RelativeDocumentMoniker": "StandAuto\\StandAuto.csproj",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\StandAuto.csproj",
+              "RelativeToolTip": "StandAuto\\StandAuto.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-27T17:55:55.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StandController.cs",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Controllers\\StandController.cs",
+              "RelativeDocumentMoniker": "StandAuto\\Controllers\\StandController.cs",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Controllers\\StandController.cs",
+              "RelativeToolTip": "StandAuto\\Controllers\\StandController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T16:58:31.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Program.cs",
+              "RelativeDocumentMoniker": "StandAuto\\Program.cs",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Program.cs",
+              "RelativeToolTip": "StandAuto\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T16:48:56.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApiContext.cs",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Data\\ApiContext.cs",
+              "RelativeDocumentMoniker": "StandAuto\\Data\\ApiContext.cs",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\Data\\ApiContext.cs",
+              "RelativeToolTip": "StandAuto\\Data\\ApiContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T16:38:39.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StandAuto.csproj",
+              "DocumentMoniker": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\StandAuto.csproj",
+              "RelativeDocumentMoniker": "StandAuto\\StandAuto.csproj",
+              "ToolTip": "C:\\DEV\\Hugo_Bacalhau_TPSI0525\\UC605\\StandAuto\\StandAuto\\StandAuto.csproj",
+              "RelativeToolTip": "StandAuto\\StandAuto.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-27T16:31:20.144Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

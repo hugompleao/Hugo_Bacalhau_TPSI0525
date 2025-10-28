@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "StandAuto.Controllers.StandController",
+    "Method": "CreateEdit",
+    "RelativePath": "CreateEdit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "StandVal",
+        "Type": "StandAuto.Models.StandCars",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
