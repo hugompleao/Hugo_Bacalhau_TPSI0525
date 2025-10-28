@@ -1,0 +1,34 @@
+{"level":"info","message":"[mb:2525] mountebank v2.9.2 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2025-10-24T15:38:41.680Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-24T15:38:44.806Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-24T15:38:56.724Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-24T15:39:03.430Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] Open for business...","timestamp":"2025-10-24T15:39:03.443Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:59431 => GET /api/profile","timestamp":"2025-10-24T15:39:12.621Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51208 => GET /api/cars?brand=Toyota","timestamp":"2025-10-24T15:39:18.703Z"}
+{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-24T15:39:25.039Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51639 => POST /api/login","timestamp":"2025-10-24T15:39:53.571Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51640 => POST /api/login","timestamp":"2025-10-24T15:40:02.121Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:57791 => POST /api/users","timestamp":"2025-10-24T15:40:13.431Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:64277 => POST /api/users","timestamp":"2025-10-24T15:40:44.919Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:64187 => POST /api/temperature","timestamp":"2025-10-24T15:41:08.756Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:64189 => POST /api/temperature","timestamp":"2025-10-24T15:41:17.998Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:49251 => POST /api/temperature","timestamp":"2025-10-24T15:42:15.735Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:65357 => POST /api/temperature","timestamp":"2025-10-24T15:42:44.799Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:65359 => POST /api/temperature","timestamp":"2025-10-24T15:42:55.759Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:53206 => POST /api/temperature","timestamp":"2025-10-24T15:43:01.683Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:53207 => POST /api/temperature","timestamp":"2025-10-24T15:43:10.102Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:55555 => POST /api/tasks","timestamp":"2025-10-24T15:43:27.462Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:55556 => POST /api/tasks","timestamp":"2025-10-24T15:43:33.956Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:64318 => POST /api/auth","timestamp":"2025-10-24T15:43:46.172Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:62345 => POST /api/auth","timestamp":"2025-10-24T15:43:54.839Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:63650 => POST /api","timestamp":"2025-10-24T15:44:01.366Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:63651 => GET /imposters/api/brand","timestamp":"2025-10-24T15:44:09.998Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:61914 => GET /imposters/api/brand","timestamp":"2025-10-24T15:44:29.974Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:61916 => GET /api/brand","timestamp":"2025-10-24T15:44:41.445Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51708 => GET /api/brand","timestamp":"2025-10-24T15:46:36.088Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51710 => GET /api/cars","timestamp":"2025-10-24T15:46:40.394Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51711 => GET /api/cars","timestamp":"2025-10-24T15:46:45.867Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:51712 => GET /api/profile","timestamp":"2025-10-24T15:46:51.083Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:63971 => GET /api/teste//qualquer/coisa","timestamp":"2025-10-24T15:46:55.100Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:57740 => POST /api/users","timestamp":"2025-10-24T15:47:45.546Z"}
+{"level":"info","message":"[http:4561 ExJuntarStubs] ::ffff:127.0.0.1:61372 => POST /api/users","timestamp":"2025-10-24T15:48:04.684Z"}

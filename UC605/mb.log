@@ -1,57 +1,19 @@
-{"level":"info","message":"[mb:2525] mountebank v2.9.2 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2025-10-17T20:43:23.644Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T20:43:48.093Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T20:43:49.430Z"}
-{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-17T20:44:29.214Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] Open for business...","timestamp":"2025-10-17T20:44:29.216Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T20:44:34.387Z"}
-{"level":"info","message":"[mb:2525] GET /imposters","timestamp":"2025-10-17T20:46:31.347Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:64439 => GET /caminho","timestamp":"2025-10-17T20:47:46.511Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T20:47:46.512Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:57963 => GET /erro404","timestamp":"2025-10-17T20:48:08.811Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T20:48:08.812Z"}
-{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-17T20:56:44.662Z"}
-{"level":"info","message":"[http:4546 Marcas] Open for business...","timestamp":"2025-10-17T20:56:44.665Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T20:56:48.327Z"}
-{"level":"info","message":"[mb:2525] GET /imposters","timestamp":"2025-10-17T20:58:27.124Z"}
-{"level":"info","message":"[http:4546 Marcas] ::ffff:127.0.0.1:55340 => GET /imposters/api/marcas","timestamp":"2025-10-17T20:59:37.706Z"}
-{"level":"info","message":"[http:4546 Marcas] no predicate match, using default response","timestamp":"2025-10-17T20:59:37.707Z"}
-{"level":"info","message":"[http:4546 Marcas] ::ffff:127.0.0.1:57926 => GET /imposters/api/marcas","timestamp":"2025-10-17T21:00:22.801Z"}
-{"level":"info","message":"[http:4546 Marcas] no predicate match, using default response","timestamp":"2025-10-17T21:00:22.801Z"}
-{"level":"info","message":"[http:4546 Marcas] ::ffff:127.0.0.1:63992 => GET /imposters/api/marcas","timestamp":"2025-10-17T21:00:43.065Z"}
-{"level":"info","message":"[http:4546 Marcas] no predicate match, using default response","timestamp":"2025-10-17T21:00:43.065Z"}
-{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-17T21:08:29.950Z"}
-{"level":"info","message":"[http:4547 Ex2] Open for business...","timestamp":"2025-10-17T21:08:29.953Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T21:08:33.184Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:59575 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:09:34.325Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:09:34.325Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:53755 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:04.664Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:11:04.664Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:53756 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:05.394Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:11:05.395Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:53757 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:05.781Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:11:05.782Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:53758 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:06.038Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:11:06.038Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:53759 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:06.946Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:11:06.946Z"}
-{"level":"info","message":"[http:4547 Ex2] ::ffff:127.0.0.1:53760 => GET /api/cars?marcas=Toyota","timestamp":"2025-10-17T21:11:15.738Z"}
-{"level":"info","message":"[http:4547 Ex2] ::ffff:127.0.0.1:63579 => GET /api/cars","timestamp":"2025-10-17T21:12:57.224Z"}
-{"level":"info","message":"[http:4547 Ex2] no predicate match, using default response","timestamp":"2025-10-17T21:12:57.225Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T21:19:45.271Z"}
-{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-17T21:19:57.016Z"}
-{"level":"info","message":"[http:4548 Ex3] Open for business...","timestamp":"2025-10-17T21:19:57.022Z"}
-{"level":"info","message":"[mb:2525] GET /images/book.jpg","timestamp":"2025-10-17T21:20:01.223Z"}
-{"level":"info","message":"[http:4548 Ex3] ::ffff:127.0.0.1:58123 => GET /api/cars","timestamp":"2025-10-17T21:20:08.558Z"}
-{"level":"info","message":"[http:4548 Ex3] no predicate match, using default response","timestamp":"2025-10-17T21:20:08.559Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] ::ffff:127.0.0.1:50119 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:22:21.194Z"}
-{"level":"info","message":"[http:4545 ImposterVazio] no predicate match, using default response","timestamp":"2025-10-17T21:22:21.194Z"}
-{"level":"info","message":"[http:4548 Ex3] ::ffff:127.0.0.1:50120 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:22:35.603Z"}
-{"level":"info","message":"[http:4548 Ex3] no predicate match, using default response","timestamp":"2025-10-17T21:22:35.604Z"}
-{"level":"info","message":"[http:4548 Ex3] ::ffff:127.0.0.1:62069 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:22:40.724Z"}
-{"level":"info","message":"[http:4548 Ex3] no predicate match, using default response","timestamp":"2025-10-17T21:22:40.725Z"}
-{"level":"info","message":"[http:4547 Ex2] ::ffff:127.0.0.1:62070 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:22:47.239Z"}
-{"level":"info","message":"[http:4547 Ex2] no predicate match, using default response","timestamp":"2025-10-17T21:22:47.239Z"}
-{"level":"info","message":"[http:4547 Ex2] ::ffff:127.0.0.1:54649 => GET /api/cars?brand=Toyota","timestamp":"2025-10-17T21:25:24.787Z"}
-{"level":"info","message":"[http:4547 Ex2] no predicate match, using default response","timestamp":"2025-10-17T21:25:24.788Z"}
-{"level":"info","message":"[http:4547 Ex2] ::ffff:127.0.0.1:60785 => GET /api/cars","timestamp":"2025-10-17T21:28:20.357Z"}
-{"level":"info","message":"[http:4547 Ex2] no predicate match, using default response","timestamp":"2025-10-17T21:28:20.358Z"}
+{"level":"info","message":"[mb:2525] mountebank v2.9.2 now taking orders - point your browser to http://localhost:2525/ for help","timestamp":"2025-10-27T15:54:37.510Z"}
+{"level":"info","message":"[mb:2525] POST /imposters","timestamp":"2025-10-27T15:54:42.375Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] Open for business...","timestamp":"2025-10-27T15:54:42.387Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:61387 => GET /api/produtos","timestamp":"2025-10-27T15:54:50.116Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:61388 => GET /api/produtos/101","timestamp":"2025-10-27T15:54:54.179Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:64227 => GET /api/produtos/1","timestamp":"2025-10-27T15:55:15.324Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:64228 => GET /api/produtos/999","timestamp":"2025-10-27T15:55:19.911Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:64229 => GET /api/produtos/10","timestamp":"2025-10-27T15:55:27.385Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:57501 => POST /api/produtos","timestamp":"2025-10-27T15:55:32.434Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:59861 => POST /api/produtos","timestamp":"2025-10-27T15:56:10.318Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:59863 => POST /api/produtos","timestamp":"2025-10-27T15:56:14.195Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:59864 => PUT /api/produtos/101/stock","timestamp":"2025-10-27T15:56:21.002Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:54879 => PUT /api/produtos/999/stock","timestamp":"2025-10-27T15:56:26.709Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:54880 => PUT /api/produtos/999/stock","timestamp":"2025-10-27T15:56:30.422Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:54881 => PUT /api/produtos/1/stock","timestamp":"2025-10-27T15:56:38.272Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:56853 => PUT /api/produtos/10/stock","timestamp":"2025-10-27T15:56:46.102Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:56854 => DELETE /api/produtos/1","timestamp":"2025-10-27T15:56:53.357Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:56115 => DELETE /api/produtos/2","timestamp":"2025-10-27T15:57:02.411Z"}
+{"level":"info","message":"[http:4546 Gestão de Inventário de Produtos] ::ffff:127.0.0.1:56118 => DELETE /api/produtos/10","timestamp":"2025-10-27T15:57:11.822Z"}

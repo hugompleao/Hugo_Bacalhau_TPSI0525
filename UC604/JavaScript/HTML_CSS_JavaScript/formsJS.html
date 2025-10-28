@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primos</title>
+</head>
+<body>
+    <h2>Exercicio números Primos</h2>
+    <label for="numeros">Escolha um números</label>
+    <input type="text" id="numeros">
+    <button onclick="numPrimos()">Verifica se é primo</button>
+    <output id="resultado"></output>
+
+    <script>
+        function numPrimos(){
+            let primo='';
+            const num=parseInt(document.getElementById("numeros").value)
+            console.log(num)
+
+            for(let i= 2; i < num; i++){
+                if(i % num == 0){
+                    primo=`O número não é primo ${num}`;
+                    break;
+                }
+                else{
+                    primo=`É primo ${num}`;
+                }
+
+                document.getElementById('resultado').textContent=primo
+            }
+        }
+    </script>
+</body>
+</html>
