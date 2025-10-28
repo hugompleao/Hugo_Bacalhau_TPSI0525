@@ -1,0 +1,229 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+  "port": 4546,
+  "protocol": "http",
+  "name": "Gestão de Inventário de Produtos",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/produtos/1" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "error": "Erro",
+              "message": "Produto com stock ainda existente"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/produtos" } },
+        { "matches": { "body": "\"quantidade\"\\s*:\\s*-[0-9]+" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "headers": { "Content-Type": "application/json" },
+            "body": { "erro": "Valor inválido" }
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/produtos/10" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 404, 
+            "body": { "erro": "O produto não existe" } 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "PUT", "path": "/api/produtos/10/stock" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 404, 
+            "body": { "erro": "O produto não existe" }  
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/produtos/10" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 404, 
+            "body": { "erro": "O produto não existe" } 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/produtos/2" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": { "mensagem": "Produto removido com sucesso." } 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "PUT" } },
+        { "matches": { "path": "^/api/produtos/\\d+/stock$" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": { 
+                "id": 1, 
+                "mensagem": "Stock atualizado" } 
+                } 
+            }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "GET" } },
+        { "matches": { "path": "^/api/produtos/\\d+$" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": { 
+                "id": 1, 
+                "nome": "Farinha", 
+                "preco": 1.5, 
+                "quantidade": 20 
+                } 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/produtos" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 201, 
+            "body": { 
+                "id": 3, 
+                "nome": "Ovos", 
+                "preco": 3.0, 
+                "quantidade": 1 
+                } 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/produtos" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": [
+              { "id": 1, "nome": "Farinha", "quantidade": 25 },
+              { "id": 2, "nome": "Alface", "quantidade": 0 }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
+
+### Teste de pesquisa 1
+GET http://localhost:4546/api/produtos
+### Esperado: 200 OK + lista com produtos (Caneta A, Caderno B)
+
+
+### Teste de pesquisa 2
+GET http://localhost:4546/api/produtos/1
+### Esperado: 200 OK + detalhes do produto (Caneta)
+
+
+### Teste de pesquisa 3
+GET http://localhost:4546/api/produtos/10
+### Esperado: 404 Not Found + {"erro": "Produto inexistente"}
+
+
+### Teste de pesquisa 4
+POST http://localhost:4546/api/produtos
+Content-Type: application/json
+
+{
+  "nome": "Ovos",
+  "preco": 3.0,
+  "quantidade": 10
+}
+### Esperado: 201 Created + {"id": 103, "nome": "Novo Item", ...}
+
+
+### Teste de pesquisa 5
+POST http://localhost:4546/api/produtos
+Content-Type: application/json
+
+{
+  "nome": "Ovos",
+  "preco": 4.00,
+  "quantidade": -5
+}
+### Esperado: 400 Bad Request + {"erro": "Valor inválido"}
+
+
+### Teste de pesquisa 6
+PUT http://localhost:4546/api/produtos/1/stock
+Content-Type: application/json
+
+{
+  "alteracao": 5
+}
+### Esperado: 200 OK + {"mensagem": "Stock atualizado ..."}
+
+
+### Teste de pesquisa 7
+PUT http://localhost:4546/api/produtos/10/stock
+Content-Type: application/json
+
+{
+  "alteracao": -2
+}
+### Esperado: 404 Not Found + {"erro": "Produto inexistente"}
+
+
+### Teste de pesquisa 8
+DELETE http://localhost:4546/api/produtos/1
+### Esperado: 409 Conflict + {"message": "stock não é zero"}
+
+
+### Teste de pesquisa 9
+DELETE http://localhost:4546/api/produtos/2
+### Esperado: 200 OK + {"mensagem": "Produto removido com sucesso"}
+
+
+### Teste de pesquisa 10
+DELETE http://localhost:4546/api/produtos/10
+### Esperado: 404 Not Found + {"erro": "Produto inexistente"}

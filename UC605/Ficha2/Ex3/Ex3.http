@@ -1,0 +1,100 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+  "port": 4547,
+  "protocol": "http",
+  "name": "Reservas de Hotel",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/reservas" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": {
+              "id": 1,
+              "cliente": "Hugo",
+              "checkin": "2025-10-28",
+              "checkout": "2025-11-02",
+              "tipo_quarto": "Casal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/reservas" } },
+        { "equals": { "body.tipo_quarto": "Suite Luxo" } }
+      ],
+      "responses": [
+        {
+          "is": { 
+            "statusCode": 409,
+            "headers": { "Content-Type": "application/json" },
+            "body": "Sem disponibilidade"
+            }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/reservas" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": { "Content-Type": "application/json" },
+            "body": {  
+              "message": "Reserva criada com sucesso"
+            }
+          }
+        }]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "PUT", "path": "/api/reservas/1" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 403,
+            "body": "Alterações só permitidas até 24h antes do checkin"
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/reservas/1" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 403,
+            "body": "Não é possível cancelar após o checkin"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+
+### Teste pesquisa 1
+GET http://localhost:4547/api/reservas
+
+
+### Teste pesquisa 2
+GET http://localhost:4547/api/reservas?cliente=Hugo
+
+### Teste pesquisa 3
+GET http://localhost:4547/api/reservas/1
+
+### Teste pesquisa 4
+GET http://localhost:4547/api/reservas/10
