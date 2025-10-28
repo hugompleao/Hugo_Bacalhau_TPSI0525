@@ -1,0 +1,97 @@
+POST http://localhost:2525/imposters 
+Content-Type: "application/json"
+
+{
+  "port": 4548,
+  "protocol": "http",
+  "name": "Biblioteca Digital",
+  "stubs": [
+    {
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/livros" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": [
+              { 
+                "id": 1, 
+                "titulo": "Nárnia", 
+                "emprestado": false 
+            },
+            { 
+                "id": 2, 
+                "titulo": "Hoobit", 
+                "emprestado": true 
+            }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/livros/2" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": { 
+                "id": 2, 
+                "titulo": "Hobbit", 
+                "emprestado": true 
+                }
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [{ "equals": { "method": "POST", "path": "/api/emprestimos" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "body": "Livro emprestado"
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [{ "equals": { "method": "PUT", "path": "/api/emprestimos/10/devolucao" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 404,
+            "body": "Empréstimo não encontrado"
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [{ "equals": { "method": "DELETE", "path": "/api/livros/2" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 403,
+            "body": "Não é possível apagar, livro emprestado"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+
+### Teste de pesquisa 1
+GET http://localhost:4548/api/livros
+
+### Teste de pesquisa 2
+GET http://localhost:4548/api/livros/2
+
+### Teste de pesquisa 3
+POST http://localhost:4548/api/emprestimos
+
+### Teste de pesquisa 4
+PUT http://localhost:4548/api/Emprestimos/10/devolucao
+
+### Teste de pesquisa 5
+DELETE http://localhost:4548/api/livros/2
