@@ -1,0 +1,156 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4550,
+  "protocol": "http",
+  "name": "Gestão de Tarefas",
+  "stubs": [
+    {
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/tarefas" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": [
+              { "id": 1, 
+                "titulo": "Ir às compras", 
+                "descricao": "Comprar pão e carne", 
+                "estado": "concluida" 
+              },
+              { "id": 2, 
+                "titulo": "Ir aos correios", 
+                "descricao": "Levar carta", 
+                "estado": "pendente" 
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "predicates": [{ "equals": { "method": "GET", "path": "/api/tarefas/1" } }],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": { 
+                "id": 1, 
+                "titulo": "Ir às compras", 
+                "descricao": "Comprar pão e carne", 
+                "estado": "concluida" 
+                }      
+            }
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/tarefas" } },
+        { "matches": { "body": "\"titulo\"\\s*:\\s*\"\"|\"descricao\"\\s*:\\s*\"\"" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 400,
+            "body": "Campos encontra-se vazio" 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/tarefas" } },
+        { "matches": { "body": "\"titulo\"\\s*:\\s*\"\"|\"descricao\"\\s*:\\s*\"\"" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 201, 
+            "body": "Tarefa criada com sucesso" 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "PUT", "path": "/api/tarefas/1" } },
+        { "matches": { "body": "{ \"estado\": \"concluída\" }" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": "Tarefa atualizada para concluída" 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/tarefas/2" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": "Tarefa eliminada com sucesso" 
+            } 
+        }
+      ]
+    },
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/tarefas/1" } }
+      ],
+      "responses": [
+        { "is": { 
+            "statusCode": 400, 
+            "body": "Só é possível eliminar tarefas concluídas" 
+            } 
+        }
+      ]
+    }
+  ]
+}
+
+
+
+### Teste de pesquisa 1
+GET http://localhost:4550/api/tarefas
+
+### Teste de pesquisa 2
+GET http://localhost:4550/api/tarefas/1
+
+### Teste de pesquisa 3
+POST http://localhost:4550/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "",
+  "descricao": "teste"
+}
+
+
+### Teste de pesquisa 4
+POST http://localhost:4550/api/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Nova tarefa",
+  "descricao": "Regar plantas"
+}
+
+### Teste de pesquisa 5
+PUT http://localhost:4550/api/tarefas/1
+Content-Type: application/json
+
+{
+  "estado": "concluída"
+}
+
+### Teste de pesquisa 6
+DELETE http://localhost:4550/api/tarefas/1
+
+### Teste de pesquisa 7
+DELETE http://localhost:4550/api/tarefas/2
+
+
+
