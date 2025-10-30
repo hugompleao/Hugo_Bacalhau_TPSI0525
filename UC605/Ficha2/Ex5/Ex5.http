@@ -1,0 +1,215 @@
+POST http://localhost:2525/imposters 
+Content-Type: application/json
+
+{
+  "port": 4549,
+  "protocol": "http",
+  "name": "Gestão de Funcionários",
+  "stubs": [
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/funcionarios" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "headers": { "Content-Type": "application/json" },
+            "body": [
+              { "id": 1, "nome": "Hugo", "cargo": "CEO", "salario": 1500, "tarefas": 4 },
+              { "id": 2, "nome": "João", "cargo": "Funcionário", "salario": 900, "tarefas": 2 },
+              { "id": 3, "nome": "Maria", "cargo": "Funcionário", "salario": 900, "tarefas": 0 }
+            ]
+          }
+        }
+      ]
+    },
+    
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST", "path": "/api/funcionarios" } },
+            { "matches": { "body": ".*\"salario\"\\s*:\\s*(0?[0-7][0-9]{2}|[0-9]{1,2})" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "body": { "error": "Erro", "message": "Salário abaixo do mínimo" }
+          }
+        }
+      ]
+    },
+
+    {
+      "predicates": [
+        {
+          "and": [
+            { "equals": { "method": "POST", "path": "/api/funcionarios" } },
+            { "matches": { "body": ".*\"salario\"\\s*:\\s*(7[6-9][0-9]|[8-9][0-9]{2,}|[1-9][0-9]{3,})" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "body": { "message": "Funcionário criado com sucesso" }
+          }
+        }
+      ]
+    },
+
+    {
+      "predicates": [
+        {
+          "and": [
+            { "matches": { "method": "PUT", "path": "^/api/funcionarios/\\d+/salario$" } },
+            { "matches": { "body": "\"salario\"\\s*:\\s*(0?[0-7][0-9]{2}|[0-9]{1,2})" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "body": { "error": "Erro", "message": "Ajuste de salário abaixo do mínimo" }
+          }
+        }
+      ]
+    },
+
+    {
+      "predicates": [
+        {
+          "and": [
+            { "matches": { "method": "PUT", "path": "^/api/funcionarios/\\d+/salario$" } },
+            { "matches": { "body": "\"salario\"\\s*:\\s*(7[6-9][0-9]|[8-9][0-9]{2,}|[1-9][0-9]{3,})" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": { "message": "Salário alterado com sucesso" }
+          }
+        }
+      ]
+    },
+
+    {
+      "predicates": [
+        {
+          "and": [
+            { "matches": { "method": "DELETE", "path": "^/api/funcionarios/\\d+$" } },
+            { "matches": { "body": ".*\"tarefas\"\\s*:\\s*[1-9][0-9]*" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "body": { "error": "Erro", "message": "Não é possível apagar, funcionário com tarefas pendentes" }
+          }
+        }
+      ]
+    },
+
+    {
+      "predicates": [
+        {
+          "and": [
+            { "matches": { "method": "DELETE", "path": "^/api/funcionarios/\\d+$" } },
+            { "matches": { "body": ".*\"tarefas\"\\s*:\\s*0" } }
+          ]
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "Funcionário apagado com sucesso"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+### Teste de pesquisa 1
+GET http://localhost:4549/api/funcionarios
+
+### Teste de pesquisa 2
+POST http://localhost:4549/api/funcionarios
+Content-Type: application/json
+
+{
+  "nome": "Ana",
+  "tarefas": 3
+}
+
+### Teste de pesquisa 3
+POST http://localhost:4549/api/funcionarios
+Content-Type: application/json
+
+{
+  "nome": "Rita",
+  "cargo": "Assistente",
+  "salario": 700
+}
+
+
+### Teste de pesquisa 
+POST http://localhost:4549/api/funcionarios
+Content-Type: application/json
+
+{
+  "nome": "Carlos",
+  "cargo": "Gestor",
+  "salario": 900,
+  "tarefas": 1
+}
+
+### Teste de pesquisa 5
+PUT http://localhost:4549/api/funcionarios/2/salario
+Content-Type: application/json
+
+{
+  "salario": 700
+}
+
+### Teste de pesquisa 
+PUT http://localhost:4549/api/funcionarios/2/salario
+Content-Type: application/json
+
+{
+  "salario": 1200
+}
+
+### Teste de pesquisa 7
+DELETE http://localhost:4549/api/funcionarios/2
+Content-Type: application/json
+
+{
+  "tarefas": 2
+}
+
+### Teste de pesquisa 8
+DELETE http://localhost:4549/api/funcionarios/3
+Content-Type: application/json
+
+{
+  "tarefas": 0
+}
+
+
