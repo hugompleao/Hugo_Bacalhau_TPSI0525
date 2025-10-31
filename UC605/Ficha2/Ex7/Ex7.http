@@ -1,0 +1,208 @@
+POST http://localhost:2525/imposters
+Content-Type: application/json
+
+{
+  "port": 4551,
+  "protocol": "http",
+  "name": "Gestão de Clientes e Pedidos",
+  "stubs": [
+
+    // 1.1 Regra Quantidade inválida - 400 Bad Request
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/pedidos" } },
+        { "matches": { "body": "\"quantidade\"\\s*:\\s*0" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400,
+            "body": { 
+              "erro": "Error", 
+              "message": "A quantidade do produto deve ser superior a zero." 
+            } 
+          }
+        }
+      ]
+    },
+
+    // 1.2 Regra Cliente inexistente - 404 Not Found
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/pedidos" } },
+        { "matches": { "body": "\\{\\s*\"cliente_id\"\\s*:\\s*10,\\s*\"produto\"\\s*:\\s*\"teste\",\\s*\"quantidade\"\\s*:\\s*5\\s*\\}" } }
+
+      ],
+      "responses": [
+        { "is": { "statusCode": 404, "body": { "erro": "Erro", "message": "Cliente inexistente" } } }
+      ]
+    },
+
+    // 1.3 Produto inválido - 400 Bad Request
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/pedidos" } },
+        { "matches": { "body": "\"produto\"\\s*:\\s*\"\\s*\"" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 400, "body": { "erro": "Produto inválido", "message": "O campo produto é obrigatório." } } }
+      ]
+    },
+
+    // 1.4 DELETE apenas se pedido em processamento - 409 Conflict
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/pedidos/2" } }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 409,
+            "body": {
+              "erro": "Erro",
+              "message": "O pedido só pode ser cancelado se estiver em fase de processamento."
+            }
+          }
+        }
+      ]
+    },
+
+    // 1.5 Cliente não existe - 404
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/clientes/10/pedidos" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 404, "body": { "erro": "Cliente inexistente" } } }
+      ]
+    },
+
+    // ===============================================================
+    // 2. CASOS DE SUCESSO (2XX)
+    // ===============================================================
+
+    // 2.1 Cancelar pedido com sucesso
+    {
+      "predicates": [
+        { "equals": { "method": "DELETE", "path": "/api/pedidos/1" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 200, "body": { "mensagem": "Pedido cancelado com sucesso." } } }
+      ]
+    },
+
+    // 2.2 Atualizar estado válido
+    {
+      "predicates": [
+        { "matches": { "method": "PUT", "path": "^/api/pedidos/\\d+$" } },
+        { "matches": { "body": "\"estado\"\\s*:\\s*\"(Em processamento|Enviado|Entregue)\"" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 200, "body": { "id": 201, "novo_estado": "Enviado", "mensagem": "Estado do pedido atualizado." } } }
+      ]
+    },
+
+    // 2.3 Atualizar estado inválido - 400
+    {
+      "predicates": [
+        { "matches": { "method": "PUT", "path": "^/api/pedidos/\\d+$" } },
+        { "equals": { "body": "\"estado\": \"Cancelado\"" } }      
+        ],
+      "responses": [
+        { "is": { "statusCode": 400, "body": { "erro": "Estado inválido", "message": "O estado deve ser 'Em processamento', 'Enviado' ou 'Entregue'." } } }
+      ]
+    },
+
+    // 2.4 Adicionar novo cliente
+    {
+      "predicates": [
+        { "equals": { "method": "POST", "path": "/api/clientes" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 201, "body": { "id": 2, "nome": "Hugo" } } }
+      ]
+    },
+
+    // 2.5 Lista clientes
+    {
+      "predicates": [
+        { "equals": { "method": "GET", "path": "/api/clientes" } }
+      ],
+      "responses": [
+        { "is": { "statusCode": 200, "body": [ { "id": 1, "nome": "Hugo" }, { "id": 2, "nome": "Miguel" } ] } }
+      ]
+    }
+  ]
+}
+
+
+
+### Teste de pesquisa 1
+POST http://localhost:4551/api/pedidos
+Content-Type: application/json
+
+{
+  "cliente_id": 1,
+  "produto": "Produto X",
+  "quantidade": 0
+}
+
+
+### Teste de pesquisa 2
+POST http://localhost:4551/api/pedidos
+Content-Type: application/json
+
+{
+  "cliente_id": 10,
+  "produto": "teste",
+  "quantidade":5
+}
+
+### Teste de pesquisa 3
+POST http://localhost:4551/api/pedidos
+Content-Type: application/json
+
+{
+  "cliente_id": 1,
+  "produto": "",
+  "quantidade": 5
+}
+
+### Teste de pesquisa 4
+DELETE http://localhost:4551/api/pedidos/2
+
+### Teste de pesquisa 5
+GET http://localhost:4551/api/clientes/10/pedidos
+
+### Teste de pesquisa 6
+DELETE http://localhost:4551/api/pedidos/1
+
+### Teste de pesquisa 7
+PUT http://localhost:4551/api/pedidos/201
+Content-Type: application/json
+
+{
+  "estado": "Enviado"
+}
+
+### Teste de pesquisa 8
+PUT http://localhost:4551/api/pedidos/201
+Content-Type: application/json
+
+{
+  "estado": "Cancelado"
+}
+
+### Teste de pesquisa 9
+POST http://localhost:4551/api/clientes
+Content-Type: application/json
+
+{
+  "nome": "Novo Cliente"
+}
+
+### Teste de pesquisa 10
+GET http://localhost:4551/api/clientes
+
+
+
